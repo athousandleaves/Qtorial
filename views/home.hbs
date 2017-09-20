@@ -1,0 +1,48 @@
+<div class="container container-primary">
+    <header class="jumbotron">
+        <div class="container text-center">
+            <div class="site-heading">
+                <div class="entry">
+                    <h1>Qtorial</h1>
+                    <p>What would you like to learn?</p>
+                </div>
+                {{#each topics}}
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <a href="/topics/{{{this._id}}}">
+                        <div class="window-display thumbnail logos">
+                            <img src="{{{this.image}}}">
+                            <div class="caption">
+                                <h5><strong>{{{this.name}}}</strong></h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+                <p>
+                    <a class="btn btn-primary btn-lg" href="/topics">View all topics</a>
+                </p>
+            </div>
+        </div>
+    </header>
+    <hr>
+
+    <div class="row text-center spacey" id="recently">
+        <h3>Recently added</h3>
+    </div>
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        {{#each tutorials}}
+        <div class="col-lg-4 col-md-6">
+            <a href="/tutorials/{{this._id}}">
+                <div class="thumbnail">
+                    <img src="{{this.thumbnail}}">
+                    <div class="caption">
+                        <h4>{{this.name}}</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+
+    </div>
+
+</div>
