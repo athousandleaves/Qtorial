@@ -28,4 +28,10 @@ var commentRoutes    = require('./routes/comments'),
 
 var url = process.env.DATABASEURL || "localhost:27017/qtorial";
 mongoose.connect(url);
-    
+
+  //set up view engine
+app.engine('.hbs', hbs({
+    defaultLayout: 'main',
+    extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
