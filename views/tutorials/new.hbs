@@ -1,0 +1,33 @@
+<div class="container-primary">
+    <div class="row">
+        <h2 style="text-align: center">Add a New Tutorial</h2>
+        <div style="width: 30%; margin: 30px auto;">
+            <form action="/tutorials/all" method="POST">
+                <strong><label>YouTube ID:</label></strong>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3"><strong>https://www.youtube.com/watch?v=</strong></span>
+                    <input class="form-control" type="text" placeholder="paste YouTube ID here" name="videoID">
+                </div>
+
+                <div class="form-group">
+                    <label for="sel1">Select topic:</label>
+                    <select class="form-control" id="sel1" name="topic">
+                            {{#each topics}}
+                                <option>
+                                    {{{this.name}}}
+                                </option>
+                            {{/each}}
+                        </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
+                </div>
+            </form>
+            <a href="/" class="pull-right">Go back</a>
+
+        </div>
+
+
+    </div>
+
+</div>
