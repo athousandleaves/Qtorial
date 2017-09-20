@@ -117,3 +117,7 @@ app.use(function (req, res, next){
     res.locals.success = req.flash('success');
     next();
 });
+
+app.use(indexRoutes);
+app.use(tutorialRoutes);
+app.use(commentRoutes);
