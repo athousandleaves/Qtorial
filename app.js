@@ -121,3 +121,7 @@ app.use(function (req, res, next){
 app.use(indexRoutes);
 app.use(tutorialRoutes);
 app.use(commentRoutes);
+
+app.listen(process.env.PORT || 5000, function(){
+    console.log('Server running');
+});
