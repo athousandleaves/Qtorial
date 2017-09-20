@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="thumbnail">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{{tutorial.videoID}}}"></iframe>
+                </div>
+                <div class="caption">
+                    <h3>
+                        <a href="https://www.youtube.com/watch?v={{{tutorial.videoID}}}">{{{tutorial.name}}}</a> {{#if currentUser}}
+                        <span class="pull-right">
+                            <a class="btn btn-lg btn-default" href="">Bookmark <i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                        </span> {{/if}}
+                    </h3>
+                    <p class="tutorial-description">{{{tutorial.description}}}</p>
+                    <a class="btn btn-xs btn-warning" href="/tutorials/{{{tutorial._id}}}/edit">Edit</a>
+                    <form id="delete-form" action="/tutorials/{{{tutorial._id}}}?_method=DELETE" method="POST">
+                        <button class="btn btn-xs btn-danger">Delete</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="well">
+                {{#if currentUser}}
+                <div class="text-right">
+                    <a class="btn btn-success" href="/tutorials/{{{tutorial._id}}}/comments/new">Add New Comment</a>
+                </div>
+                {{/if}}
+                <hr> {{#each tutorial.comments}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>{{{this.author.username}}}</strong>
+                        <span class="pull-right">
+                               10 days ago
+                           </span>
+                        <p>
+                            {{{this.text}}}
+                        </p>
+                        <a class="btn btn-xs btn-warning" href="/tutorials/{{{tutorial._id}}}/comments/{{{this.comment._id}}}/edit">
+                                   Edit
+                               </a>
+                        <form class="form-delete" action="/tutorials/{{{tutorial._id}}}/comments/{{{this.comment._id}}}?_method=DELETE" method=POST>
+                            <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                        </form>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
