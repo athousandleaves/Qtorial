@@ -20,3 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
   //serve CSS directory
 app.use(express.static(__dirname + "/public"));
+
+  //requiring routes
+var commentRoutes    = require('./routes/comments'),
+    tutorialRoutes   = require('./routes/tutorials'),
+    indexRoutes      = require('./routes/index');
