@@ -94,3 +94,6 @@ hbs.create({
         }
     }
 })
+
+app.use(methodOverride('_method'));
+app.use(flash());
