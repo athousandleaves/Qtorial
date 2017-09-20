@@ -97,3 +97,10 @@ hbs.create({
 
 app.use(methodOverride('_method'));
 app.use(flash());
+
+  //PASSPORT CONFIG
+app.use(require('express-session')({
+    secret: "Toejam and Earl",
+    resave: false,
+    saveUninitialized: false
+}));
