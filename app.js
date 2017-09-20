@@ -15,3 +15,8 @@ var express               = require('express'),
     Comment               = require('./models/comment'),
     User                  = require('./models/user'),
     middleware            = require('./middleware/index');
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+  //serve CSS directory
+app.use(express.static(__dirname + "/public"));
