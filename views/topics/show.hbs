@@ -1,0 +1,35 @@
+<div class="container container-primary">
+
+    <div class="col-xl-12">
+        <div class="thumbnail spacey logos">
+            <img class="img-centered" src="{{{topic.image}}}">
+            <h1 class="text-center">
+                {{{topic.name}}}
+            </h1>
+            <p class="text-center topic-description">
+                {{{topic.description}}}
+            </p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="spacey text-center well">
+        <h3>Tutorial Videos</h3>
+        <hr>
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+            {{#each tutorials}}
+            <div class="col-lg-3 col-md-4">
+                <a href="/tutorials/{{this._id}}">
+                    <div class="thumbnail">
+                        <img src="{{this.thumbnail}}">
+                        <div class="caption">
+                            <h4>{{this.name}}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</div>
