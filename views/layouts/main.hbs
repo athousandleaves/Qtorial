@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Qtorial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Hind|Lusitana|Rubik|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Qtorial</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {{#unless currentUser}}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign up</a></li>
+                    {{else}}
+                    <li>
+                        <a href="/tutorials/new">
+                                Post New Tutorial
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                            </a>
+                    </li>
+                    <li><a href="/user/{{{currentUser._id}}}">Logged in as <strong>{{currentUser.username}}</strong> <i class="fa fa-user-circle" aria-hidden="true"></i></a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    {{/unless}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {{#if error}}
+        <div class="alert alert-danger col-md-4 col-md-offset-4" role="alert">
+            <strong>
+                {{error}}
+            </strong>
+
+        </div>
+        {{/if}} {{#if success}}
+        <div class="alert alert-success fade in col-md-4 col-md-offset-4" role="alert">
+            <strong>
+                {{success}}
+            </strong>
+        </div>
+        {{/if}}
+    </div>
+
+    {{{body}}}
+
+</body>
+
+</html>
