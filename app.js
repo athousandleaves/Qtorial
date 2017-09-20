@@ -25,3 +25,7 @@ app.use(express.static(__dirname + "/public"));
 var commentRoutes    = require('./routes/comments'),
     tutorialRoutes   = require('./routes/tutorials'),
     indexRoutes      = require('./routes/index');
+
+var url = process.env.DATABASEURL || "localhost:27017/qtorial";
+mongoose.connect(url);
+    
