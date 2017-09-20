@@ -1,0 +1,19 @@
+<div class="container container-primary spacey">
+    <div class="row text-center" id="recently">
+        <h3><strong>All tutorials</strong></h3>
+    </div>
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        {{#each tutorials}}
+        <div class="col-lg-3 col-md-4">
+            <a href="/tutorials/{{this._id}}">
+                <div class="thumbnail">
+                    <img src="{{this.thumbnail}}">
+                    <div class="caption">
+                        <h4><strong>{{this.name}}</strong></h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>
