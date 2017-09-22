@@ -62,3 +62,21 @@ router.get(
       });
     }
   );
+
+// Comment update route
+router.put(
+    "/tutorials/:id/comments/:comment_id",
+    middleware.isCommentOwner,
+    function(req, res) {
+      Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(
+        err,
+        updatedComment
+      ) {
+        if (err) {
+          res.redirect("back");
+        } else {
+          res.redirect("/tutorials/" + req.params.id);
+        }
+      });
+    }
+  );
