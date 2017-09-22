@@ -66,4 +66,15 @@ router.get("/topics/:id", function(req, res) {
         }
       });
   });
-  
+
+// show you all the tutorials
+router.get("/tutorials/all", function(req, res) {
+    // Get all tutorials from DB
+    tutorial.find({}, function(err, alltutorials) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("tutorials/all", { tutorials: alltutorials });
+      }
+    });
+  });
