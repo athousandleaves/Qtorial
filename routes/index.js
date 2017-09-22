@@ -4,3 +4,13 @@ var passport = require("passport");
 var User = require("../models/user");
 var tutorial = require("../models/tutorial");
 var hbs = require("express-handlebars");
+
+// ===============
+// AUTH ROUTES
+//================
+
+//show register form
+router.get("/register", function(req, res) {
+    res.render("register");
+  });
+  
