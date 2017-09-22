@@ -9,12 +9,12 @@ var hbs = require("express-handlebars");
 // AUTH ROUTES
 //================
 
-  // show register form
+// show register form
 router.get("/register", function(req, res) {
   res.render("register");
 });
 
-  // handle sign up logic
+// handle sign up logic
 router.post("/register", function(req, res) {
   var newUser = new User({ username: req.body.username });
   User.register(newUser, req.body.password, function(err, user) {
@@ -28,12 +28,12 @@ router.post("/register", function(req, res) {
   });
 });
 
-  // show login form
+// show login form
 router.get("/login", function(req, res) {
-    res.render("login");
-  });
-  
-  // handle login logic
+  res.render("login");
+});
+
+// handle login logic
 router.post(
   "/login",
   passport.authenticate("local", {
@@ -43,9 +43,16 @@ router.post(
   function(req, res) {}
 );
 
-  // logout route
+// logout route
 router.get("/logout", function(req, res) {
   req.logout();
   req.flash("success", "Logged out successfully!");
   res.redirect("/");
+});
+
+// user display
+router.get("/user/:id", function(req, res) {
+  User.findById(req.params.id, function(err, foundUser) {
+    res.render("user/show", { User: foundUser });
+  });
 });
