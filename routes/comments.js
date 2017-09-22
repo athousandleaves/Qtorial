@@ -80,3 +80,19 @@ router.put(
       });
     }
   );
+
+// Comment delete route
+router.delete(
+    "/tutorials/:id/comments/:comment_id",
+    middleware.isCommentOwner,
+    function(req, res) {
+      //findByIdAndRemove method to delete
+      Comment.findByIdAndRemove(req.params.comment_id, function(err) {
+        if (err) {
+          res.redirect("back");
+        } else {
+          res.redirect("/tutorials/" + req.params.id);
+        }
+      });
+    }
+  );
