@@ -78,3 +78,62 @@ router.get("/tutorials/all", function(req, res) {
       }
     });
   });
+
+// CREATE a new tutorial
+router.post("/tutorials/all", middleware.isLoggedIn, function(req, res) {
+    var name = "";
+    var thumbnail = "";
+    var description = "";
+    var videoID = req.body.videoID;
+    var topic = req.body.topic;
+    var author = {
+      id: req.user._id,
+      username: req.user.username
+    };
+    var parsedObj;
+    var APIkey = process.env.APIKEY;
+  
+    request(
+      "https://www.googleapis.com/youtube/v3/videos?id=" +
+        videoID +
+        "&part=snippet&key=" +
+        APIkey,
+      function(err, response, body) {
+        if (err) {
+          console.log(err);
+        } else {
+          var parsedObj = JSON.parse(body);
+          var name = parsedObj.items[0].snippet.title;
+          var description = parsedObj.items[0].snippet.description;
+  
+          // find the correct thumbnail url
+          if (parsedObj.items[0].snippet.thumbnails.maxres) {
+            var thumbnail = parsedObj.items[0].snippet.thumbnails.maxres.url;
+          } else if (parsedObj.items[0].snippet.thumbnails.standard) {
+            var thumbnail = parsedObj.items[0].snippet.thumbnails.standard.url;
+          } else if (parsedObj.items[0].snippet.thumbnails) {
+            var thumbnail = parsedObj.items[0].snippet.thumbnails.high.url;
+          }
+        }
+        // make a new object as a second step
+        var newtutorial = {
+          name: name,
+          thumbnail: thumbnail,
+          videoID: videoID,
+          description: description,
+          topic: topic,
+          author: author
+        };
+        // Create a new tutorial and save it to the DB
+        tutorial.create(newtutorial, function(err, newlyCreated) {
+          if (err) {
+            console.log(err);
+          } else {
+            //redirect back to tutorials page
+            console.log(newlyCreated);
+            res.redirect("/tutorials/all");
+          }
+        });
+      }
+    );
+  });
