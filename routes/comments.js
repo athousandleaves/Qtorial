@@ -44,3 +44,21 @@ router.post("/tutorials/:id/comments/", middleware.isLoggedIn, function(req, res
     // connect new comment to tutorial
     // redirect to tutorial show page
   });
+
+// Comment edit route
+router.get(
+    "/tutorials/:id/comments/:comment_id/edit",
+    middleware.isCommentOwner,
+    function(req, res) {
+      Comment.findById(req.params.comment_id, function(err, foundComment) {
+        if (err) {
+          res.redirect("back");
+        } else {
+          res.render("comments/edit", {
+            tutorial_id: req.params.id,
+            comment: foundComment
+          });
+        }
+      });
+    }
+  );
