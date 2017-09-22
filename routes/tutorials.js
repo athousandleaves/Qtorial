@@ -42,4 +42,28 @@ router.get("/topics", function(req, res) {
       }
     });
   });
+
+// shows more info about a topic
+router.get("/topics/:id", function(req, res) {
+    // find topic and populate tutorials associated with it
+    topic
+      .findById(req.params.id)
+      .populate("tutorials")
+      .exec(function(err, foundTopic) {
+        if (err) {
+          console.log(err);
+        } else {
+          tutorial.find({ topic: foundTopic.name }, function(err, alltutorials) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.render("topics/show", {
+                topic: foundTopic,
+                tutorials: alltutorials
+              });
+            }
+          });
+        }
+      });
+  });
   
