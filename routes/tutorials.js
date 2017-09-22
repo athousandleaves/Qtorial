@@ -166,3 +166,10 @@ router.get("/tutorials/:id", function(req, res) {
       });
     // req.params.id
   });
+
+// EDIT tutorial route
+router.get("/tutorials/:id/edit", middleware.isTutorialOwner, function(req, res) {
+    tutorial.findById(req.params.id, function(err, foundtutorial) {
+      res.render("tutorials/edit", { tutorial: foundtutorial });
+    });
+  });
