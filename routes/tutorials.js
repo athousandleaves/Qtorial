@@ -149,3 +149,20 @@ router.get("/tutorials/new", middleware.isLoggedIn, function(req, res) {
     });
     // res.render("tutorials/new");
   });
+
+// SHOW - shows more info about one tutorial
+router.get("/tutorials/:id", function(req, res) {
+    // Find tutorial and populate comments on the tutorial, and then execute the query we made
+    tutorial
+      .findById(req.params.id)
+      .populate("comments")
+      .exec(function(err, foundtutorial) {
+        if (err) {
+          console.log(err);
+        } else {
+          // render show template with that tutorial
+          res.render("tutorials/show", { tutorial: foundtutorial });
+        }
+      });
+    // req.params.id
+  });
