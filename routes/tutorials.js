@@ -197,3 +197,5 @@ router.delete("/tutorials/:id", middleware.isTutorialOwner, function(req, res) {
       }
     });
   });
+
+module.exports = router;
