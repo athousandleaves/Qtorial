@@ -186,3 +186,14 @@ router.put("/tutorials/:id", middleware.isTutorialOwner, function(req, res) {
     });
     //redirect to show page
   });
+
+// DELETE tutorial route
+router.delete("/tutorials/:id", middleware.isTutorialOwner, function(req, res) {
+    tutorial.findByIdAndRemove(req.params.id, function(err) {
+      if (err) {
+        res.redirect("/tutorials/all");
+      } else {
+        res.redirect("/tutorials/all");
+      }
+    });
+  });
