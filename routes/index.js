@@ -56,3 +56,12 @@ router.get("/user/:id", function(req, res) {
     res.render("user/show", { User: foundUser });
   });
 });
+
+// authentication check
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/login");
+  }
+  
