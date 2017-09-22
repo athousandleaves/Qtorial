@@ -137,3 +137,15 @@ router.post("/tutorials/all", middleware.isLoggedIn, function(req, res) {
       }
     );
   });
+
+// show the form that will send data to the new post route
+router.get("/tutorials/new", middleware.isLoggedIn, function(req, res) {
+    topic.find({}, function(err, alltopics) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("tutorials/new", { topics: alltopics });
+      }
+    });
+    // res.render("tutorials/new");
+  });
