@@ -1,0 +1,111 @@
+body {
+    background-color: #F4F4F4;
+}
+
+a.navbar-brand {
+    font-family: 'Lusitana', serif !important;
+    font-size: 2.75em;
+}
+
+h1 {
+    font-family: 'Lusitana', serif !important;
+    font-size: 6em !important;
+}
+
+h2 {
+    font-family: 'Lusitana', serif !important;
+    font-size: 4em !important;
+}
+
+h3 {
+    font-family: 'Lusitana', serif !important;
+    font-size: 2.75em !important;
+}
+
+h4 {
+    font-family: 'Hind', sans-serif;
+    font-size: 1.5em;
+}
+
+h5 {
+    font-family: 'Lusitana', serif !important;
+    font-size: 1.5em;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.padder {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.thumbnail {
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+    box-shadow: 0px 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.thumbnail:hover {
+    box-shadow: 0px 5px 8px 0 rgba(0,0,0,0.2);
+}
+
+.logos {
+    border: 0 none;
+}
+
+.jumbotron {
+    position: relative;
+    background-color: #F4F4F4;
+}
+
+.entry {
+    min-width: 85%;
+}
+
+#recently {
+    padding-bottom: 10px;
+    font-family: 'Rubik', serif !important;
+}
+
+.container-primary {
+    padding-top: 2em;
+}
+
+.tutorial-description {
+    padding: 1.5em;
+}
+
+.window-display.img {
+    width: 50%;
+}
+
+.alert {
+    display:inline-block;
+    text-align: center;
+}
+
+.spacey {
+    padding: 1.75em;
+}
+
+.topic-image {
+    width: 60%;
+}
+
+.form-delete {
+    display: inline;
+}
+
+#delete-form {
+    display: inline;
+}
+
+.topic-description {
+    font-size: 1.3em;
+}
