@@ -173,3 +173,16 @@ router.get("/tutorials/:id/edit", middleware.isTutorialOwner, function(req, res)
       res.render("tutorials/edit", { tutorial: foundtutorial });
     });
   });
+
+// UPDATE tutorial route
+router.put("/tutorials/:id", middleware.isTutorialOwner, function(req, res) {
+    //find and update correct tutorial
+    tutorial.findByIdAndUpdate(req.params.id, req.body.tutorial, function(err, updatedtutorial) {
+      if (err) {
+        res.redirect("/tutorials/all");
+      } else {
+        res.redirect("/tutorials/" + req.params.id);
+      }
+    });
+    //redirect to show page
+  });
